@@ -3,9 +3,11 @@ name: Deployment Workflow
 # Trigger this workflow on pushes to the specified branch
 on:
   push:
-    branches: feature/dashboard  
+    branches: 
+    - main  
   pull_request:
-    branches: feature/dashboard
+    branches: 
+      - main
 
 jobs:
   deploy:
