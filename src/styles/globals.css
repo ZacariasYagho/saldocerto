@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;  /* Cor de fundo padrão */
+    --foreground: 222.2 84% 4.9%;  /* Cor de texto padrão */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;  /* Cor de fundo em modo escuro */
+    --foreground: 210 40% 98%;  /* Cor de texto em modo escuro */
+  }
+
+  /* Definindo a classe border-border */
+  .border-border {
+    border-color: rgba(0, 0, 0, 0.1); /* Defina a cor da borda que você deseja */
+    border-width: 1px; /* Defina a largura da borda, se necessário */
+  }
+
+  /* Definindo as classes bg-background e text-foreground */
+  .bg-background {
+    background-color: hsl(var(--background)); /* Usando a variável de cor */
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground)); /* Usando a variável de cor */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;  /* Aplicar borda padrão */
+  }
+  body {
+    @apply bg-background text-foreground;  /* Aplicar fundo e texto padrão */
+  }
+}
+
+@layer components {
+  .border-border {
+    border-color: rgba(0, 0, 0, 0.1); /* Defina a cor da borda que você deseja */
+    border-width: 1px; /* Defina a largura da borda, se necessário */
+  }
+}
+ 
