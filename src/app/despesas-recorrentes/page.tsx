@@ -80,6 +80,11 @@ export default function DespesasRecorrentes() {
     console.log('Voltar button clicked')
   }
 
+  const removerDespesa = (index: number) => {
+    const despesasAtualizadas = despesasRecorrentes.filter((_, i) => i !== index)
+    setDespesasRecorrentes(despesasAtualizadas)
+  }
+
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4">
       <Button 
@@ -140,6 +145,9 @@ export default function DespesasRecorrentes() {
               <li key={index} className="flex justify-between items-center bg-gray-100 p-2 rounded">
                 <span>{despesa.descricao}</span>
                 <span>R$ {despesa.valor.toFixed(2)} ({despesa.frequencia})</span>
+                <Button onClick={() => removerDespesa(index)} className="ml-2">
+                  Remover
+                </Button>
               </li>
             ))}
           </ul>
