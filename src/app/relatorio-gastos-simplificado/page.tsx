@@ -100,11 +100,13 @@ export default function RelatorioGastosSimplificado() {
           </div>
         </CardHeader>
         <CardContent>
-          <Alert variant={relatorio.tipo as 'default' | 'destructive'}>
-            <relatorio.icone className="h-4 w-4" />
-            <AlertTitle>{relatorio.titulo}</AlertTitle>
-            <AlertDescription>{relatorio.descricao}</AlertDescription>
-          </Alert>
+          {relatorio && (
+            <Alert variant={relatorio.tipo as 'default' | 'destructive'}>
+              <relatorio.icone className="h-4 w-4" />
+              <AlertTitle>{relatorio.titulo}</AlertTitle>
+              <AlertDescription>{relatorio.descricao}</AlertDescription>
+            </Alert>
+          )}
           {dados.temDados && (
             <div className="mt-4 space-y-2">
               <p><strong>Orçamento {periodo}:</strong> R$ {dados.orcamento.toFixed(2)}</p>

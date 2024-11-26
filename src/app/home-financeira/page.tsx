@@ -24,7 +24,17 @@ const gerarDadosSimulados = () => ({
   ],
 })
 
-function NotificationPopup({ isOpen, onClose, notifications, toggleNotification }) {
+function NotificationPopup({
+  isOpen,
+  onClose,
+  notifications,
+  toggleNotification,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  notifications: { spendingLimit: boolean; upcomingExpenses: boolean };
+  toggleNotification: (type: 'spendingLimit' | 'upcomingExpenses') => void;
+}) {
   return (
     <div className={`fixed inset-0 flex items-center justify-center z-50 ${isOpen ? '' : 'hidden'}`}>
       <div className="bg-white rounded-lg shadow-xl p-6 w-96 max-w-full">
@@ -62,7 +72,7 @@ export default function Component() {
     spendingLimit: true,
     upcomingExpenses: true,
   })
-  const [activeNotifications, setActiveNotifications] = useState([])
+  const [activeNotifications, setActiveNotifications] = useState<string[]>([])
 
   useEffect(() => {
     // Simula a atualização de dados a cada 30 segundos
@@ -75,7 +85,9 @@ export default function Component() {
 
   useEffect(() => {
     const newNotifications = []
-    const percentualGasto = (dados.gastosMes / dados.limiteMensal) * 100
+    const percentualGasto = dados.limiteMensal > 0 
+        ? (dados.gastosMes / dados.limiteMensal) * 100 
+        : 0;
 
     if (notifications.spendingLimit && percentualGasto >= 80) {
       newNotifications.push("Você está próximo do limite de gastos!")
@@ -94,9 +106,11 @@ export default function Component() {
     setActiveNotifications(newNotifications)
   }, [dados, notifications])
 
-  const percentualGasto = (dados.gastosMes / dados.limiteMensal) * 100
+  const percentualGasto = dados.limiteMensal > 0 
+      ? (dados.gastosMes / dados.limiteMensal) * 100 
+      : 0;
 
-  const toggleNotification = (type) => {
+  const toggleNotification = (type: 'spendingLimit' | 'upcomingExpenses') => {
     setNotifications(prev => ({ ...prev, [type]: !prev[type] }))
   }
 

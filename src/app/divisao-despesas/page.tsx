@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -19,6 +19,11 @@ export default function DivisaoDespesas() {
   const [valor, setValor] = useState('')
   const [novoParticipante, setNovoParticipante] = useState('')
   const [participantes, setParticipantes] = useState<Participante[]>([])
+  const [currentDate, setCurrentDate] = useState('')
+
+  useEffect(() => {
+    setCurrentDate(new Date().toLocaleString())
+  }, [])
 
   const adicionarParticipante = () => {
     if (novoParticipante.trim() === '') {
@@ -143,6 +148,7 @@ export default function DivisaoDespesas() {
         </CardFooter>
       </Card>
       <ToastContainer />
+      <p>Data atual: {currentDate}</p>
     </div>
   )
 }
