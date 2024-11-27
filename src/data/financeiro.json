@@ -1,0 +1,38 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "saldoAtual": 5000,
+      "limiteMensal": 5000,
+      "gastosMes": 2500,
+      "despesasRecorrentes": [
+        {
+          "id": "1",
+          "descricao": "Netflix",
+          "valor": 39.90,
+          "vencimento": "2024-02-15"
+        },
+        {
+          "id": "2",
+          "descricao": "Academia",
+          "valor": 89.90,
+          "vencimento": "2024-02-20"
+        }
+      ],
+      "despesasDivididas": [
+        {
+          "id": "1",
+          "descricao": "Aluguel",
+          "valor": 1200,
+          "participantes": 2
+        },
+        {
+          "id": "2",
+          "descricao": "Conta de Luz",
+          "valor": 150,
+          "participantes": 3
+        }
+      ]
+    }
+  ]
+}
